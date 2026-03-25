@@ -64,5 +64,17 @@ plt.xlabel("Input")
 plt.ylabel("Output")
 plt.legend()
 plt.grid()
+functions = {
+    "Sigmoid": sigmoid(x),
+    "Tanh": tanh(x),
+    "ReLU": relu(x),
+    "Leaky ReLU": leaky_relu(x)
+}
 
+for name, y in functions.items():
+    plt.figure()
+    plt.plot(x, y)
+    plt.title(name)
+    plt.grid()
+    plt.show()
 plt.show()
