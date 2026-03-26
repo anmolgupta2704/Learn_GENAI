@@ -1,6 +1,6 @@
 # LangChain Basics 🚀
 
-This folder contains basic implementations of LangChain concepts.
+This folder contains basic implementations of LangChain concepts and nlp concepts.
 
 ## Files
 
