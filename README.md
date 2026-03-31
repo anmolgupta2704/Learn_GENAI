@@ -6,7 +6,7 @@ This project demonstrates basic Natural Language Processing using NLTK.
 - Download NLTK datasets
 - Explore Brown Corpus categories
 - Extract sample text
-- Perform tokenization
+- Perform tokenization.
 
 ## Run
 
