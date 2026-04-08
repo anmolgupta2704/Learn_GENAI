@@ -31,3 +31,7 @@ if __name__ == "__main__":
     print(generate_ngrams(text, 3))
     print("\n4-grams:")
     print(generate_ngrams(text, 4))
+    print("\n5-grams:")
+    print(generate_ngrams(text, 5))
+    print("\n6-grams:")
+    print(generate_ngrams(text, 6))
