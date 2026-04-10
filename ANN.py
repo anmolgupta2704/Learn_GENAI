@@ -64,13 +64,19 @@ data = {
     'label': [0, 1, 0, 1, 0, 1]
 }
 df = pd.DataFrame(data)
-# Split the dataset into features and labels
-X = df.drop('label', axis=1)
-y = df['label']
-# Split the dataset into training and testing sets
+# # Split the dataset into features and labels
+# X = df.drop('label', axis=1)
+# y = df['label']
+# # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
-print("Training Features:\n", X_train)
-print("\nTraining Labels:\n", y_train)
-print("\nTesting Features:\n", X_test)
-print("\nTesting Labels:\n", y_test)
+# print("Training Features:\n", X_train)
+# print("\nTraining Labels:\n", y_train)
+# print("\nTesting Features:\n", X_test)
+# print("\nTesting Labels:\n", y_test)
+
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+sc=StandardScaler()
+from sklearn.compose import ColumnTransformer
+x_train=sc.fit_transform(x_train)
+x_test=sc.transform(x_test)
 
