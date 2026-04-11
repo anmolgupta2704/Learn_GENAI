@@ -54,16 +54,16 @@
 # print("Predictions:", predictions)
 
 ## splliting the dataset into training and testing sets
-from sklearn.model_selection import train_test_split
-import pandas as pd
-# Sample dataset
-data = {
-    'numerical_feature1': [10, 2, 11, 15, 3, 12],
-    'numerical_feature2': [5, 8, 3, 6, 9, 4],
-    'categorical_feature': ['A', 'B', 'A', 'B', 'A', 'B'],
-    'label': [0, 1, 0, 1, 0, 1]
-}
-df = pd.DataFrame(data)
+# from sklearn.model_selection import train_test_split
+# import pandas as pd
+# # Sample dataset
+# data = {
+#     'numerical_feature1': [10, 2, 11, 15, 3, 12],
+#     'numerical_feature2': [5, 8, 3, 6, 9, 4],
+#     'categorical_feature': ['A', 'B', 'A', 'B', 'A', 'B'],
+#     'label': [0, 1, 0, 1, 0, 1]
+# }
+# df = pd.DataFrame(data)
 # # Split the dataset into features and labels
 # X = df.drop('label', axis=1)
 # y = df['label']
@@ -79,15 +79,61 @@ df = pd.DataFrame(data)
 # from sklearn.compose import ColumnTransformer
 # x_train=sc.fit_transform(x_train)
 # x_test=sc.transform(x_test)
+# import tensorflow as tf
+# tf.random.set_seed(42)
+# ann=tf.keras.models.Sequential()
+# ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
+# ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
+# ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+# # compilling the ANN model
+# ann.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# x_train = df.drop('label', axis=1)
+# y_train = df['label']
+# # fitting the ANN model to the training set
+# ann.fit(x_train, y_train, batch_size=32, epochs=100)
+
 import tensorflow as tf
-tf.random.set_seed(42)
-ann=tf.keras.models.Sequential()
-ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
-ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
-ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
-# compilling the ANN model
-ann.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-x_train = df.drop('label', axis=1)
-y_train = df['label']
-# fitting the ANN model to the training set
-ann.fit(x_train, y_train, batch_size=32, epochs=100)
+from tensorflow.keras.callbacks import EarlyStopping
+
+def advanced_ann(X_train, X_test, y_train, y_test):
+    """
+    Advanced ANN with:
+    - Dropout (prevents overfitting)
+    - EarlyStopping (stops training when no improvement)
+    """
+
+    model = tf.keras.models.Sequential()
+
+    # Input + Hidden Layer
+    model.add(tf.keras.layers.Dense(64, activation='relu', input_dim=X_train.shape[1]))
+
+    # Dropout layer (random neurons off)
+    model.add(tf.keras.layers.Dropout(0.3))
+
+    # Hidden Layer
+    model.add(tf.keras.layers.Dense(32, activation='relu'))
+
+    # Output Layer
+    model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+
+    # Compile
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+    # Early stopping (stops when validation loss doesn't improve)
+    early_stop = EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True
+    )
+
+    # Train
+    model.fit(
+        X_train,
+        y_train,
+        validation_data=(X_test, y_test),
+        epochs=100,
+        batch_size=32,
+        callbacks=[early_stop]
+    )
+
+    return model
