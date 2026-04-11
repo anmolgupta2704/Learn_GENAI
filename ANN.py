@@ -87,3 +87,7 @@ ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
 ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 # compilling the ANN model
 ann.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+x_train = df.drop('label', axis=1)
+y_train = df['label']
+# fitting the ANN model to the training set
+ann.fit(x_train, y_train, batch_size=32, epochs=100)
