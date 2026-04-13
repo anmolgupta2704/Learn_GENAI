@@ -175,7 +175,7 @@ Feel free to fork this repo and contribute by adding:
 
 ## ⭐ Support
 
-If you found this helpful, please ⭐ the repository!
+If you found this helpful, please ⭐ the repository!!
 
 ---
 
