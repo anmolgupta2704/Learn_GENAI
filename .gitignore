@@ -1,0 +1,65 @@
+# =========================
+# Python Basics
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# =========================
+# TensorFlow / ML Models
+# =========================
+*.h5
+*.keras
+*.ckpt
+*.pb
+saved_model/
+
+# =========================
+# Dataset (VERY IMPORTANT)
+# =========================
+dataset/
+data/
+*.zip
+*.tar
+*.gz
+
+# =========================
+# Logs & Outputs
+# =========================
+logs/
+*.log
+history/
+checkpoints/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints
+
+# =========================
+# VS Code / IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Flask (if you use later)
+# =========================
+instance/
+.webassets-cache
+
+# =========================
+# Environment Variables
+# =========================
+.env
