@@ -75,6 +75,6 @@ history = model.fit(
 # 5. Save Model
 # =========================
 
-model.save("cat_dog_model.h5")
+model.save("cat_dog_model.keras")
 
 print("✅ Model Trained & Saved!")
