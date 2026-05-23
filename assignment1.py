@@ -38,3 +38,6 @@ for tokens in filtered_tokens:
     stemmed_tokens.append(stemmed)
 
 print("After Stemming:", stemmed_tokens)
+
+from functions.otp_generation import generate_alphanumeric_otp
+print("Generated OTP:", generate_alphanumeric_otp())
